@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset=utf-8 />
+    <title>JS Bin</title>
+</head>
+<body onload="displayproduct()">
+<label for="addproduct"><h1>Add New Product</h1></label><br>
+<input type="text" id="addproduct" placeholder="New Product"><input type="button" value="Add" onclick="addproduct()">
+<h1>Display All Product</h1>
+<div id="list"></div>
+<script>
+    let product = ["asgsaga","sfsgfsg"]
+    let displayproducts=document.getElementById("list")
+    function displayproduct(){
+        let displayproducts=document.getElementById("list")
+        let display="<table><tr><th><b>Product Name</b></th> <th colspan='2'></th> <th style= padding-right: 0px>"+product.length+" products"+"</th></tr>"
+        for (let i=0;i<product.length;i++){
+            display+="<tr><td>"+product[i]+"</td><td><input type='button' value='Edit' onclick="+"editproduct("+i+")></td> <td><input type='button' value='Delete' onclick="+"deleteproduct("+i+")></td> </tr>"
+        }
+        display+="</table>"
+        displayproducts.innerHTML=display
+    }
+    function addproduct(){
+        let addproduct = document.getElementById("addproduct").value
+        product.push(addproduct)
+        displayproduct()
+    }
+    function deleteproduct(index){
+        product.splice(index,1)
+        displayproduct()
+    }
+    function editproduct(index){
+        let changename = prompt("nhập tên sp")
+        product[index]=changename
+        displayproduct()
+    }
+</script>
+</body>
+</html>
